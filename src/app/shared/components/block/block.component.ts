@@ -1,9 +1,10 @@
-import { Component, Input, OnChanges, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, OnChanges, ChangeDetectionStrategy, OnInit, AfterViewChecked } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { BehaviorSubject } from 'rxjs';
 import blocksToHtml from '@sanity/block-content-to-html';
 import { environment } from '../../../../environments/environment';
 
+declare var Prism;
 const h = blocksToHtml.h;
 
 @Component({
@@ -12,20 +13,30 @@ const h = blocksToHtml.h;
     styleUrls: ['./block.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BlockComponent implements OnChanges {
+export class BlockComponent implements OnChanges, AfterViewChecked {
     @Input('block') block: any;
+
+    // Post-rendered body HTML
     bodyHtml: BehaviorSubject<SafeHtml> = new BehaviorSubject({});
+
+    // URL Link Renderer
     linkRenderer = props => (
         h('a', {
             className: 'has-text-weight-medium has-text-grey-darker',
             style: 'text-decoration: underline;'
         }, props.children)
     );
-    codeRenderer = props => (
-        h('pre', {className: props.node.language},
-            h('code', props.node.code)
+
+    // Code Snippet Renderer
+    codeRenderer = props => {
+        console.log(props.node);
+        props.node.language = this.jsToTs(props.node.language);
+        return h('pre', {className: `line-numbers language-${props.node.language}`},
+            h('code', {innerHTML: Prism.highlight(props.node.code, Prism.languages[props.node.language])})
         )
-    );
+    };
+
+    // Standard Block Renderer
     blockRenderer = props => {
         switch (props.node.style) {
             case 'h1':
@@ -69,5 +80,15 @@ export class BlockComponent implements OnChanges {
 
         // Sanitize generated HTML
         this.bodyHtml.next(this.sanitizer.bypassSecurityTrustHtml(pureHtml));
+    }
+
+    ngAfterViewChecked(): void {
+        // Add line numbering after view is loaded
+        Prism.highlightAll();
+    }
+
+    // Implicitly set JS to TS
+    jsToTs(str: string): string {
+        return str.replace('javascript', 'typescript').replace('js', 'ts');
     }
 }

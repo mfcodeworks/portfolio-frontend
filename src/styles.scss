@@ -2,6 +2,8 @@
 @import "~tiny-slider/dist/tiny-slider.css";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import "~bulma";
+@import "~prismjs/themes/prism-okaidia.css";
+@import "~prismjs/plugins/line-numbers/prism-line-numbers.css";
 
 html, body {
     height: 100%;
@@ -11,6 +13,10 @@ html {
     overflow-y: scroll;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+}
+
+pre {
+    white-space: pre-wrap !important;
 }
 
 .avatar {
