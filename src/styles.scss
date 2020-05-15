@@ -1,1 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~tiny-slider/dist/tiny-slider.css";
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+@import "~bulma";
+
+html, body {
+    height: 100%;
+}
+
+html {
+    overflow-y: scroll;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+.avatar {
+    width: 50px !important;
+    height: 50px !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+}
+.media-content {
+    overflow-y: hidden;
+}
+.block-content ul {
+    list-style-type: disc;
+    list-style-position: inside;
+    ul {
+        margin-left: 1rem;
+        list-style-type: circle;
+    }
+}

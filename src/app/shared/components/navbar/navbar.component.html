@@ -1,0 +1,28 @@
+<nav class='navbar is-transparent is-{{ color || "dark" }}' role='navigation' aria-label='main menu'>
+    <div class='navbar-brand'>
+        <!-- <figure class="navbar-item">
+            <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+        </figure> -->
+
+        <a role="button"
+            class="navbar-burger"
+            aria-label="main menu"
+            aria-expanded="false"
+            data-target="menu"
+            (click)='toggleActive()'>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+    <div [class.is-active]='isActive | async' class='navbar-menu' id='menu'>
+        <div class='navbar-start'></div>
+        <div class='navbar-end'>
+            <a *ngFor='let r of navRoutes()'
+                class='navbar-item'
+                [routerLink]='["/"].concat(r.path)'>
+                {{ r.name }}
+            </a>
+        </div>
+    </div>
+</nav>

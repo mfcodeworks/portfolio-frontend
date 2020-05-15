@@ -1,0 +1,82 @@
+<app-navbar color='black'></app-navbar>
+
+<article *ngIf='post | async; let p'>
+    <div class='content'>
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+            <ul>
+                <li class='first-bread-margin'><a [routerLink]="['/', 'blog']">Blog</a></li>
+                <li><a [routerLink]="['/', 'blog', 'category', p.categories[0].title]">{{ p.categories[0].title }}</a></li>
+                <li class="is-active"><a href="#" aria-current="page">{{ p.title }}</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <section class='section' id='title'>
+        <div class='columns is-centered'>
+            <div class='column is-half'>
+                <h1 class='title is-2'>
+                    {{ p.title }}
+                </h1>
+                <div class="media">
+                    <div class="media-left">
+                        <a [routerLink]='["/", "blog", "author", p.author.slug.current]'>
+                            <figure class="image">
+                                <img class='avatar'
+                                    [src]="p.author.image.asset.url + '?w=100'"
+                                    [alt]="p.author.name">
+                            </figure>
+                        </a>
+                    </div>
+                    <div class="media-content">
+                        <p>
+                            <a class='title is-6' [routerLink]='["/", "blog", "author", p.author.slug.current]'>
+                                {{ p.author.name }}
+                            </a>
+                            <br />
+                            <time class="subtitle is-6" [dateTime]="p.publishedAt">
+                                {{ p.publishedAt | date:'medium' }}
+                            </time>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class='content' id='tag-container'>
+        <div class='columns is-centered'>
+            <div class='column is-half'>
+                <a class='subtitle is-7 has-text-grey'
+                    *ngFor='let t of p.tags; let i = index'
+                    [routerLink]="['tag', t.slug.current]">
+                    {{ t.title | titlecase }}<ng-container *ngIf='i < (p.tags.length-1)'>,</ng-container>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <section class="hero is-fullwidth has-background">
+        <img class="hero-background is-transparent"
+            [alt]="p.title"
+            [src]="p.mainImage.asset.url" />
+    </section>
+
+    <section class='section'>
+        <div class="columns is-centered">
+            <div class='column is-three-fifths'>
+                <app-block [block]='p.bodyRaw'></app-block>
+            </div>
+        </div>
+    </section>
+
+    <section class='section'>
+        <div class="columns is-centered">
+            <div class='column is-fullwidth'>
+                <div class='box'>
+                    <h4 class='title is-4'>Preview</h4>
+                    <iframe *ngIf='p.preview' class='preview-frame' [src]='previewURL | async' [title]='p.title'></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+</article>

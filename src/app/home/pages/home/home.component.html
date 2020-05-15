@@ -1,0 +1,45 @@
+<section class="hero is-fullheight has-background has-text-centered">
+    <img alt="Cool Fullscreen Background Image"
+        class="hero-background is-transparent"
+        src="assets/img/hero.jpg" />
+    <div class='hero-head'>
+        <app-navbar></app-navbar>
+    </div>
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title is-spaced is-size-1-desktop is-size-2-tablet is-size-3-mobile">
+                Responsive Apps, Clean Backend Code &amp; Advanced IT Management and Solutions
+            </h1>
+            <h2 class="subtitle is-size-4-desktop">
+                I help solve your IT problems.<br />
+                I design clean, fast, maintainable code for any project.
+            </h2>
+        </div>
+    </div>
+</section>
+
+<section class='section has-background-dark is-medium has-text-centered is-long'>
+    <div class='container'>
+        <div class='columns is-centered'>
+            <div class="column is-three-quarters">
+                <h1 class="title is-spaced is-size-3-desktop is-size-4-mobile has-text-white">
+                    Hi, I’m Arran. Nice to meet you.
+                </h1>
+                <h2 class="subtitle is-size-5-desktop has-text-white">
+                    Since beginning my programming journey 5 years ago (professionally) I've held many roles;
+                    Sys Admin, Business Analyst, DevOps Engineer, Fullstack Engineer, I've helped scale out
+                    websites for large international organisations, coded messaging bots from scratch,
+                    created business-oriented software, and architected microservice solutions for IT bottlenecks.
+                    <br/><br/>
+                    I'm passionate about IT and always learning (even on weekends), I've made mistakes and learned from them,
+                    I've done my best to expand my IT arsenal to understand some of the top current technologies including NodeJS,
+                    GraphQL, Docker, Angular, Ionic, WordPress, Stripe, and many more frontend and backend tools.
+                </h2>
+            </div>
+        </div>
+
+        <div class='slider-container'>
+            <app-tool-slider [tools]='imageSlides | async'></app-tool-slider>
+        </div>
+    </div>
+</section>
