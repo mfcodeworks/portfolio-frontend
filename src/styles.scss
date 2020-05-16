@@ -4,29 +4,49 @@
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import "~bulma";
 
-html, body {
-    height: 100%;
-}
-
+/* Display Optimization */
 html {
-    overflow-y: scroll;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    overflow-y: auto;
 }
 
+/* Full width body with sticky footer */
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    app-root {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+        app-footer {
+            margin-top: auto;
+        }
+    }
+}
+
+/* Wrap line numbering for code snippets */
 pre {
     white-space: pre-wrap !important;
 }
 
+/* Rounded avatars */
 .avatar {
     width: 50px !important;
     height: 50px !important;
     object-fit: cover !important;
     border-radius: 50% !important;
 }
+
+/* Remove uneeded scrollbar */
 .media-content {
     overflow-y: hidden;
 }
+
+/* Style lists for block content */
 .block-content ul {
     list-style-type: disc;
     list-style-position: inside;

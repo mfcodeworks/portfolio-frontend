@@ -1,1 +1,8 @@
-<p>search works!</p>
+<app-posts-listing
+    [title]='title | async | titlecase'
+    [posts]='posts | async'
+    [categories]='categories | async'
+    [tags]='tags | async'
+    [authors]='authors | async'
+    (openModal)='openModal($event)'
+    (closeModal)='closeModal($event)'></app-posts-listing>

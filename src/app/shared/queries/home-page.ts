@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-export const HomePage = gql`query HomePage {
+export const HomePage = gql`query Home {
     allTools {
         title
         logo {

@@ -1,0 +1,43 @@
+<article class='card'>
+    <div class='card-image'>
+        <a [routerLink]="['article', p.slug.current]">
+            <figure class='image'>
+                <img class='post-hero' [src]='p.mainImage.asset.url + "?h=500"' [alt]='p.title'>
+            </figure>
+        </a>
+    </div>
+
+    <div class="card-content">
+        <div class="media">
+            <div class="media-content">
+                <p>
+                    <a class="title is-4 split-text" [routerLink]="['article', p.slug.current]">
+                        <span>{{ p.title }}</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </p>
+                <p>
+                    <a class="subtitle is-6" (click)="openModal(p.author.slug.current)">
+                        {{ p.author.name }}
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <div class="content">
+            <p class='subtitle is-6'>
+                {{ p.excerpt }}
+                <br />
+            </p>
+            <time class='subtitle is-6' [dateTime]="p.publishedAt">
+                {{ p.publishedAt | date:'mediumDate' }}
+            </time>
+            <br /><br />
+            <p>
+                <a class='subtitle is-7 has-text-grey' *ngFor='let t of p.tags; let i = index' [routerLink]="['tag', t.slug.current]">
+                    {{ t.title | titlecase }}<ng-container *ngIf='i < (p.tags.length-1)'>,</ng-container>
+                </a>
+            </p>
+        </div>
+    </div>
+</article>

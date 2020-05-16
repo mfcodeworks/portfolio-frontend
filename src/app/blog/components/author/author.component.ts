@@ -22,10 +22,8 @@ export class AuthorComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        console.log('Loading author', this.slug);
         this.author = this.blog.getBlogAuthor(this.slug).pipe(
-            map(({data}) => data.allAuthor[0]),
-            tap(console.log)
+            map(({data}) => data.allAuthor[0])
         );
     }
 

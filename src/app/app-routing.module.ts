@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 
-// TODO: Create all modules
 const routes: Routes = [
     {
         path: '',
@@ -11,10 +10,10 @@ const routes: Routes = [
         path: 'blog',
         loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule)
     },
-    // {
-    //     path: 'contact',
-    //     loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)
-    // }
+    {
+        path: 'contact',
+        loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)
+    }
 ];
 
 const options: ExtraOptions = {

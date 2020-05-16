@@ -9,6 +9,7 @@ export interface PostGraphQL {
     slug?: SlugGraphQL;
     mainImage?: ImageGraphQL;
     bodyRaw?: any[];
+    publishedAt: string;
     preview?: string;
     excerpt?: string;
     author?: AuthorGraphQL;

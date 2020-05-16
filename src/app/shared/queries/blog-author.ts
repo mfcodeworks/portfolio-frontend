@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-export const BlogAuthorPage = gql`query AuthorPage($slug: String) {
+export const BlogAuthor = gql`query BlogAuthor($slug: String) {
     allAuthor(where: {
         slug: {
             current: {

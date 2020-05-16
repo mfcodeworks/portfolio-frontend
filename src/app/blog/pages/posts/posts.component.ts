@@ -14,6 +14,9 @@ import { ModalService } from '../../../services/modal/modal.service';
 })
 export class PostsComponent {
 
+    // Page title
+    title = 'Latest Articles';
+
     // Consolidate page data
     pageData: Observable<any> = this.router.queryParamMap.pipe(
         map(m => parseInt(m.get('page') || '1')),

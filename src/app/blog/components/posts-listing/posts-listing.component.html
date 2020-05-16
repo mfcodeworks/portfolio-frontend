@@ -1,0 +1,39 @@
+<app-navbar color='black'></app-navbar>
+
+<section class='section'>
+    <div class='container'>
+        <h1 class='title is-8'>{{ title }}</h1>
+
+        <div class='columns is-centered'>
+            <div class='column is-one-fifth'>
+                <aside class='menu'>
+                    <p class='menu-label'>Categories</p>
+                    <ul class='menu-list'>
+                        <li *ngFor='let c of categories'>
+                            <a [routerLink]="['/', 'blog', 'category', c.title]">{{ c.title }}</a>
+                        </li>
+                    </ul>
+                    <p class='menu-label is-hidden-mobile'>Tags</p>
+                    <ul class='menu-list is-hidden-mobile'>
+                        <li *ngFor='let t of tags'>
+                            <a [routerLink]="['/', 'blog', 'tag', t.slug.current]">{{ t.title | titlecase }}</a>
+                        </li>
+                    </ul>
+                </aside>
+            </div>
+
+            <div class='column is-three-fifths'>
+                <app-post-preview
+                    *ngFor='let p of posts'
+                    (openAuthor)='openModal($event)'
+                    [post]='p'></app-post-preview>
+            </div>
+
+            <div class='column is-one-fifth'></div>
+        </div>
+    </div>
+</section>
+
+<app-modal *ngFor='let a of authors' [name]='a.slug.current'>
+    <app-author (close)='closeModal($event)' [slug]='a.slug.current'></app-author>
+</app-modal>

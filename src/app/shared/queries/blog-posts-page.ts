@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-export const BlogPostsPage = gql`query PostsPage(
+export const BlogPostsPage = gql`query BlogPosts(
     $limit: Int = 10
     $offset: Int = 0
 ) {

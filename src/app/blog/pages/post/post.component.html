@@ -48,7 +48,7 @@
             <div class='column is-half'>
                 <a class='subtitle is-7 has-text-grey'
                     *ngFor='let t of p.tags; let i = index'
-                    [routerLink]="['tag', t.slug.current]">
+                    [routerLink]="['/', 'blog', 'tag', t.slug.current]">
                     {{ t.title | titlecase }}<ng-container *ngIf='i < (p.tags.length-1)'>,</ng-container>
                 </a>
             </div>
