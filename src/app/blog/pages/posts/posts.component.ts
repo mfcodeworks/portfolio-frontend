@@ -2,8 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { BlogService } from '../../../services/blog/blog.service';
 import { ActivatedRoute } from '@angular/router';
 import { map, switchMap, share } from 'rxjs/operators';
-import { PostGraphQL, CategoryGraphQL, TagGraphQL } from '../../../shared/core';
+import { PostGraphQL, CategoryGraphQL, TagGraphQL, AuthorGraphQL } from '../../../shared/core';
 import { Observable } from 'rxjs';
+import { ModalService } from '../../../services/modal/modal.service';
 
 @Component({
     selector: 'app-posts',
@@ -23,13 +24,30 @@ export class PostsComponent {
     // Get blog posts
     posts: Observable<PostGraphQL[]> = this.pageData.pipe(map(({data}) => data.allPost));
 
+    // Get post author
+    authors: Observable<AuthorGraphQL[]> = this.posts.pipe(
+        // Map posts to author
+        map(posts => posts.map(p => p.author)),
+
+        // Create distinct author set
+        map(authors => [...new Set(authors)])
+    );
+
     // Fetch categories and tags
     categories: Observable<CategoryGraphQL[]> = this.pageData.pipe(map(({data}) => data.allCategory));
     tags: Observable<TagGraphQL[]> = this.pageData.pipe(map(({data}) => data.allTags));
 
     constructor(
         private blog: BlogService,
+        private modals: ModalService,
         private router: ActivatedRoute
     ) { }
 
+    openModal(name: string): void {
+        this.modals.open(name);
+    }
+
+    closeModal(name: string): void {
+        this.modals.close(name);
+    }
 }

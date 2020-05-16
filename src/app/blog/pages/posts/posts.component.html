@@ -36,13 +36,13 @@
                         <div class="media">
                             <div class="media-content">
                                 <p>
-                                    <a class="title is-4 split-text" [routerLink]="['article', p.slug.current]">
+                                    <a class="title is-4 split-text" (click)='openModal(p.author.slug.current)'>
                                         <span>{{ p.title }}</span>
                                         <i class="fas fa-arrow-right"></i>
                                     </a>
                                 </p>
                                 <p>
-                                    <a class="subtitle is-6" [routerLink]="['author', p.author.slug.current]">
+                                    <a class="subtitle is-6" (click)="openModal(p.author.slug.current)">
                                         {{ p.author.name }}
                                     </a>
                                 </p>
@@ -72,3 +72,7 @@
         </div>
     </div>
 </section>
+
+<app-modal *ngFor='let a of authors | async' [name]='a.slug.current'>
+    <app-author (close)='closeModal($event)' [slug]='a.slug.current'></app-author>
+</app-modal>

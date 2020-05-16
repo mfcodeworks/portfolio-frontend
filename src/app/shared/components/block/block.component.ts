@@ -75,7 +75,7 @@ export class BlockComponent implements OnChanges, AfterViewChecked {
                 }
             },
             ...environment.sanity,
-            className: 'block-content is-size-5'
+            className: 'block-content is-size-5 is-size-6-mobile'
         });
 
         // Sanitize generated HTML

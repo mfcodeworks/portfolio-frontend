@@ -6,4 +6,5 @@ export interface AuthorGraphQL {
     slug?: SlugGraphQL;
     image?: ImageGraphQL;
     bioRaw?: any;
+    twitter?: string;
 }

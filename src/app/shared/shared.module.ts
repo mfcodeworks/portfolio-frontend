@@ -4,12 +4,14 @@ import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ToolSliderComponent } from './components/tool-slider/tool-slider.component';
 import { BlockComponent } from './components/block/block.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
     NavbarComponent,
     ToolSliderComponent,
-    BlockComponent
+    BlockComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import { BlockComponent } from './components/block/block.component';
     RouterModule,
     NavbarComponent,
     ToolSliderComponent,
-    BlockComponent
+    BlockComponent,
+    ModalComponent
   ]
 })
 export class SharedModule { }

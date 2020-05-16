@@ -19,7 +19,7 @@
                 </h1>
                 <div class="media">
                     <div class="media-left">
-                        <a [routerLink]='["/", "blog", "author", p.author.slug.current]'>
+                        <a (click)='openModal(p.author.slug.current)'>
                             <figure class="image">
                                 <img class='avatar'
                                     [src]="p.author.image.asset.url + '?w=100'"
@@ -29,7 +29,7 @@
                     </div>
                     <div class="media-content">
                         <p>
-                            <a class='title is-6' [routerLink]='["/", "blog", "author", p.author.slug.current]'>
+                            <a class='title is-6' (click)='openModal(p.author.slug.current)'>
                                 {{ p.author.name }}
                             </a>
                             <br />
@@ -80,3 +80,7 @@
         </div>
     </section>
 </article>
+
+<app-modal *ngIf='author | async; let a' [name]='a.slug.current'>
+    <app-author (close)='closeModal($event)' [slug]='a.slug.current'></app-author>
+</app-modal>

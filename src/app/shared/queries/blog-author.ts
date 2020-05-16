@@ -9,11 +9,15 @@ export const BlogAuthorPage = gql`query AuthorPage($slug: String) {
         }
     }) {
         name
+        slug {
+            current
+        }
         image {
             asset {
               	url
             }
         }
         bioRaw
+        twitter
     }
 }`;

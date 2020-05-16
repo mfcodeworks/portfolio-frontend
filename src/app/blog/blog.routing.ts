@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PostsComponent } from './pages/posts/posts.component';
-import { AuthorComponent } from './pages/author/author.component';
 import { SearchComponent } from './pages/search/search.component';
 import { PostComponent } from './pages/post/post.component';
 
@@ -24,10 +23,6 @@ export const routes: Routes = [
             {
                 path: 'article/:slug',
                 component: PostComponent
-            },
-            {
-                path: 'author/:slug',
-                component: AuthorComponent
             }
         ]
     }

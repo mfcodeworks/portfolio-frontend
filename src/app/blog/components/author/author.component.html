@@ -1,0 +1,29 @@
+<ng-container *ngIf='author | async; let a'>
+    <header class="modal-card-head">
+        <div class="media is-vcentered">
+            <div class="media-left">
+                <figure class="image">
+                    <img class='avatar' [src]="a.image?.asset.url" [alt]="a.name">
+                </figure>
+            </div>
+            <div class="media-content is-vcentered">
+                <p class="title is-4">{{ a.name }}</p>
+                <p class="subtitle is-6">
+                    <a href='https://twitter.com/{{ a.twitter }}' target='_blank'>
+                        @{{ a.twitter }}
+                    </a>
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <section class='modal-card-body'>
+        <div class='content'>
+            <app-block [block]='a.bioRaw'></app-block>
+        </div>
+    </section>
+
+    <footer class="modal-card-foot buttons is-right">
+        <button class="button is-info" (click)='closeModal(a.slug.current)'>Close</button>
+    </footer>
+</ng-container>
