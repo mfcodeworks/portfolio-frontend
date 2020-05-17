@@ -1,12 +1,94 @@
 <app-navbar color='black'></app-navbar>
 
-<section class='section is-medium has-text-centered'>
+<section class='section has-background-white'>
     <div class='container'>
-        <h1 class='title is-8'>Contact</h1>
-
         <div class='columns is-centered'>
             <div class="column is-three-quarters">
-                <h1 class='title is-spaced is-size-3-desktop is-size-4-mobile'>Contact</h1>
+                <div class='heading-space'>
+                    <h1 class="title is-spaced is-size-3-desktop is-size-4-mobile">
+                        Contact Me
+                    </h1>
+                    <span class='subtitle is-size-5'>
+                        If you need a skilled developer like myself, contact me below!
+                        <br/><br/>
+                        I offer services including:
+                        <ul>
+                            <li>Architecting, scaling, or implementing applications (JS, TS, PHP)</li>
+                            <li>Building a fast optimized Ionic app for Android, iOS, Web (PWA), and Desktop</li>
+                            <li>Managing web hosting, DNS management, website speed optimization</li>
+                            <li>Systems administration and monitoring</li>
+                            <li>Hourly coding work on NodeJS or PHP applications</li>
+                            <li><strong>Fulltime work!</strong> If you'd like me as a part of your team I'd be happy to hear it!</li>
+                        </ul>
+                        Contact me below with a quote, question, or offer and I'll ensure I reply ASAP!
+                    </span>
+
+                    <form [formGroup]="emailForm" (ngSubmit)='sendEmail()'>
+                        <fieldset [disabled]='processing | async'>
+                            <div class="field">
+                                <div class="control has-icons-left has-icons-right">
+                                    <input [class.is-danger]='getErrors("email")'
+                                        formControlName="email"
+                                        placeholder="Email"
+                                        type="email"
+                                        class="input" />
+
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-envelope"></i>
+                                    </span>
+
+                                    <span *ngIf='getErrors("email")' class="icon is-small is-right">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </span>
+                                </div>
+                                <p *ngIf='getErrors("email")' class="help is-danger">{{ getErrors('email') | titlecase }}</p>
+                            </div>
+
+                            <div class="field">
+                                <div class="control has-icons-right">
+                                    <input [class.is-danger]='getErrors("subject")'
+                                        formControlName="subject"
+                                        class="input"
+                                        type="text"
+                                        placeholder="Subject" />
+
+                                    <span *ngIf='getErrors("subject")' class="icon is-small is-right">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </span>
+                                </div>
+                                <p *ngIf='getErrors("subject")' class="help is-danger">{{ getErrors('subject') | titlecase }}</p>
+                            </div>
+
+                            <div class="field">
+                                <div class="control">
+                                    <textarea [class.is-danger]='getErrors("message")'
+                                        formControlName="message"
+                                        placeholder="Message"
+                                        class="textarea"></textarea>
+                                </div>
+                                <p *ngIf='getErrors("message")' class="help is-danger">{{ getErrors('message') | titlecase }}</p>
+                            </div>
+
+                            <div class="field">
+                                <div class="control">
+                                    <button class="button is-link" type='submit'>
+                                        <span *ngIf='processing | async' class="icon">
+                                            <i class="fas fa-circle-notch fa-spin"></i>
+                                        </span>
+                                        <span>Submit</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+
+                    <div *ngIf='complete | async' class="notification is-success is-light">
+                        Email sent successfully
+                    </div>
+                    <div *ngIf='error | async' class="notification is-danger is-light">
+                        Error sending email<br />{{ error | async }}
+                    </div>
+                </div>
             </div>
         </div>
     </div>

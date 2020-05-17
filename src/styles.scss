@@ -47,12 +47,19 @@ pre {
 }
 
 /* Style lists for block content */
-.block-content ul {
+ul {
     list-style-type: disc;
     list-style-position: inside;
     ul {
         margin-left: 1rem;
         list-style-type: circle;
+    }
+}
+
+/* Space list items on small devices */
+@media (max-width: 769px) {
+    li {
+        margin: 1rem 0;
     }
 }
 
