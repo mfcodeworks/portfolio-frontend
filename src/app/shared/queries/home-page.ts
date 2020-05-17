@@ -44,4 +44,16 @@ export const HomePage = gql`query Home(
             }
         }
     }
+    allMetaFiles(
+        where: {
+            name: {eq: "CV.pdf"}
+        }
+    ) {
+        name
+        file {
+            asset {
+                url
+            }
+        }
+    }
 }`;

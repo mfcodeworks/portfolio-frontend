@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { map, share } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { HomeService } from '../../../services/home/home.service';
-import { Slide, ToolGraphQL, PostGraphQL } from '../../../shared/core';
+import { Slide, ToolGraphQL, PostGraphQL, MetaFileGraphQL } from '../../../shared/core';
 
 @Component({
   selector: 'app-home',
@@ -24,6 +24,11 @@ export class HomeComponent {
     // Get latest posts
     posts: Observable<PostGraphQL[]> = this.pageData.pipe(
         map(({data}) => data.allPost)
+    );
+
+    // Get CV
+    cv: Observable<MetaFileGraphQL> = this.pageData.pipe(
+        map(({data}) => data.allMetaFiles[0])
     );
 
     constructor(private home: HomeService) { }

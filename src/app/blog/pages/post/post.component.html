@@ -69,12 +69,12 @@
         </div>
     </section>
 
-    <section class='section'>
+    <section class='section' *ngIf='p.preview'>
         <div class="columns is-centered">
             <div class='column is-fullwidth'>
                 <div class='box'>
                     <h4 class='title is-4'>Preview</h4>
-                    <iframe *ngIf='p.preview' class='preview-frame' [src]='previewURL | async' [title]='p.title'></iframe>
+                    <iframe class='preview-frame' [src]='previewURL | async' [title]='p.title'></iframe>
                 </div>
             </div>
         </div>

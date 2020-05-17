@@ -22,8 +22,7 @@ export class BlockComponent implements OnChanges, AfterViewChecked {
     // URL Link Renderer
     linkRenderer = props => (
         h('a', {
-            className: 'has-text-weight-medium has-text-grey-darker',
-            style: 'text-decoration: underline;'
+            className: 'has-text-weight-medium has-text-grey-darker has-text-underlined'
         }, props.children)
     );
 

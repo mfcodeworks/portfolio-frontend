@@ -8,7 +8,7 @@
     <div class="hero-body">
         <div class="container">
             <h1 class="title is-spaced is-size-1-desktop is-size-2-tablet is-size-3-mobile">
-                Responsive Apps, Clean Backend Code &amp; Advanced IT Management and Solutions
+                Scalable Apps, Fast Backend Code &amp; Advanced IT Management
             </h1>
             <h2 class="subtitle is-size-4-desktop">
                 I help solve your IT problems.<br />
@@ -27,12 +27,11 @@
                         Hey, I’m Arran
                     </h1>
                     <h2 class="subtitle is-size-5-desktop has-text-white">
-                        I've been a developer, coder, fullstack engineer for the past 5 years.
-                        <br /><br />
-                        I'm always learning new skills, I'm confident in my skills
-                        and I'm good at what I do. I can architect a scalable NodeJS app,
-                        create a full featured multi-platform app, and manage web hosting, DNS, and SEO,
-                        and I always deliver the best work.
+                        I'm a fully qualified, highly experienced developer
+                        with 5 years work in the industry. I've architected large scale
+                        applications within AWS, created complex multi-platform apps,
+                        worked extensively managing backend servers, and I'm an expert
+                        at web hosting, DNS management, and SEO optimization.
                     </h2>
                 </div>
             </div>
@@ -50,12 +49,13 @@
             <div class="column" id='image-grid-section'>
                 <div class='heading-spacer'>
                     <h1 class="title is-spaced is-size-3-desktop is-size-4-mobile">
-                        Tech Stack
+                        Technology Stack
                     </h1>
                     <p class='subtitle is-size-5'>
-                        I have experience in a lot of new and established technologies,
-                        below is a grid of some of the technologies I'm highly experienced
-                        in and links to my articles involving them
+                        Below is just some of the technologies I've worked extensively
+                        with, and offer my services for. <br/>
+                        I'm always practicing new technology
+                        and setting myself apart with clean, maintainable, fast code.
                     </p>
                 </div>
                 <div class='image-grid'>
@@ -79,13 +79,49 @@
                         My Latest Work
                     </h1>
                     <p class='subtitle is-size-5 has-text-white'>
-                        I'll be keeping this portfolio updated with my latest
-                        work and sharing my knowledge and experience with everyone,
-                        below is some of my latest articles
+                        I keep this portfolio updated with my latest
+                        work and share my knowledge and experience with everyone here,
+                        and at my <a class='subtitle has-text-white has-text-underlined' href="https://dev.to/mfcodeworks" target="_blank">
+                            dev.to profile
+                        </a>. Below is some of my latest articles.
                     </p>
                 </div>
                 <div class='post-preview-container'>
                     <app-post-preview *ngFor='let p of posts | async' [post]='p'></app-post-preview>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class='section has-background-white'>
+    <div class='container'>
+        <div class='columns is-centered'>
+            <div class="column is-three-quarters">
+                <div class='heading-space'>
+                    <h1 class="title is-spaced is-size-3-desktop is-size-4-mobile">
+                        Like What You See?
+                    </h1>
+                    <p class='subtitle is-size-5'>
+                        If you need someone that is confident, understands the fundamentals
+                        of HTTP protocol, proper code design, and high level concepts like
+                        AWS usage, scalable applications, fast servers, and proper web management,
+                        feel free to download a CV or contact me below.
+                    </p>
+                    <div class='buttons is-centered'>
+                        <a class='button is-dark'
+                            *ngIf='cv | async; let f'
+                            [href]='f.file.asset.url + "?dl=" + f.name'
+                            download>
+                            <span class="icon">
+                                <i class="fas fa-file-download"></i>
+                            </span>
+                            <span>Download CV</span>
+                        </a>
+                        <a class='button is-link' [routerLink]="['/', 'contact']">
+                            Contact
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

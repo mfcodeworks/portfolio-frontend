@@ -14,7 +14,6 @@
 }
 
 #image-grid-section {
-    padding: 0rem 3rem;
     .image-grid {
         display: flex;
         flex-wrap: wrap;
@@ -37,11 +36,21 @@
     margin: 4rem 0 2rem 0;
 }
 
+/* Desktop only styling */
 @media (min-width: 769px) {
+    #image-grid-section {
+        padding: 0rem 3rem;
+    }
     .heading-spacer {
-        margin: 1rem 2rem;
+        margin: 1rem 6rem;
     }
     .post-preview-container {
         margin: 3rem 5rem;
+    }
+}
+
+.buttons.is-centered {
+    .button {
+        margin: 1rem;
     }
 }
