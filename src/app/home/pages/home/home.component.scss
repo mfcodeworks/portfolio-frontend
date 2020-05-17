@@ -12,9 +12,6 @@
 .slider-container {
     margin-top: 3rem;
 }
-.x-spaced {
-    margin: 1rem 2rem;
-}
 
 #image-grid-section {
     padding: 0rem 3rem;
@@ -37,10 +34,13 @@
 }
 
 .post-preview-container {
-    margin: 3rem 0;
+    margin: 4rem 0 2rem 0;
 }
 
 @media (min-width: 769px) {
+    .heading-spacer {
+        margin: 1rem 2rem;
+    }
     .post-preview-container {
         margin: 3rem 5rem;
     }
