@@ -18,28 +18,75 @@
     </div>
 </section>
 
-<section class='section has-background-dark is-medium has-text-centered is-long'>
+<section class='section has-background-dark hero is-fullheight is-long has-text-centered'>
+    <div class='hero-body'>
+        <div class='container'>
+            <div class='columns is-centered'>
+                <div class="column is-three-quarters">
+                    <h1 class="title is-spaced is-size-3-desktop is-size-4-mobile has-text-white">
+                        Hey, I’m Arran
+                    </h1>
+                    <h2 class="subtitle is-size-5-desktop has-text-white">
+                        I've been a developer, coder, fullstack engineer for the past 5 years.<br />
+                        I'm always learning new skills, I'm confident in my skills
+                        and I'm good at what I do. I can architect a scalable NodeJS app,
+                        create a full featured multi-platform app, and manage web hosting, DNS, and SEO,
+                        and I always deliver the best work.
+                    </h2>
+                </div>
+            </div>
+
+            <div class='slider-container'>
+                <app-tool-slider [tools]='imageSlides | async'></app-tool-slider>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class='section has-background-white is-spaced'>
+    <div class='container'>
+        <div class='columns is-centered'>
+            <div class="column" id='image-grid-section'>
+                <div class='x-spaced'>
+                    <h1 class="title is-spaced is-size-3-desktop is-size-4-mobile">
+                        Tech Stack
+                    </h1>
+                    <p class='subtitle is-size-5'>
+                        I have experience in a lot of new and established technologies,
+                        below is a grid of some of the technologies I'm highly experienced
+                        in and links to my articles involving them
+                    </p>
+                </div>
+                <div class='image-grid'>
+                    <figure *ngFor='let i of imageSlides | async'>
+                        <a [routerLink]="['/', 'blog', 'tag', i.alt]">
+                            <img [src]='i.image' [alt]='i.alt' />
+                        </a>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class='section has-background-dark is-spaced'>
     <div class='container'>
         <div class='columns is-centered'>
             <div class="column is-three-quarters">
-                <h1 class="title is-spaced is-size-3-desktop is-size-4-mobile has-text-white">
-                    Hey, I’m Arran
-                </h1>
-                <h2 class="subtitle is-size-5-desktop has-text-white">
-                    Since beginning my programming journey 5 years ago (professionally) I've held many roles;
-                    Sys Admin, Business Analyst, DevOps Engineer, Fullstack Engineer, I've helped scale out
-                    websites for large international organisations, coded messaging bots from scratch,
-                    created business-oriented software, and architected microservice solutions for IT bottlenecks.
-                    <br/><br/>
-                    I'm passionate about IT and always learning (even on weekends), I've made mistakes and learned from them,
-                    I've done my best to expand my IT arsenal to understand some of the top current technologies including NodeJS,
-                    GraphQL, Docker, Angular, Ionic, WordPress, Stripe, and many more frontend and backend tools.
-                </h2>
+                <div class='x-spaced'>
+                    <h1 class="title is-spaced is-size-3-desktop is-size-4-mobile has-text-white">
+                        My Latest Work
+                    </h1>
+                    <p class='subtitle is-size-5 has-text-white'>
+                        I'll be keeping this portfolio updated with my latest
+                        work and sharing my knowledge and experience with everyone,
+                        below is some of my latest articles
+                    </p>
+                </div>
+                <div class='post-preview-container'>
+                    <app-post-preview *ngFor='let p of posts | async' [post]='p'></app-post-preview>
+                </div>
             </div>
-        </div>
-
-        <div class='slider-container'>
-            <app-tool-slider [tools]='imageSlides | async'></app-tool-slider>
         </div>
     </div>
 </section>

@@ -29,7 +29,7 @@ export class ToolSliderComponent implements AfterViewChecked {
         autoplayTimeout: 3500,
         autoplayButtonOutput: false,
         swipeAngle: false,
-        speed: 400
+        speed: 1200
     };
     slider: TinySliderInstance;
 

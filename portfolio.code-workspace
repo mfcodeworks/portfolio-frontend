@@ -7,5 +7,7 @@
 			"path": "..\\sanity-cms"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"deno.enable": false
+	}
 }

@@ -1,8 +1,8 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { map, share } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { HomeService } from '../../../services/home/home.service';
-import { Slide, ToolGraphQL } from '../../../shared/core';
+import { Slide, ToolGraphQL, PostGraphQL } from '../../../shared/core';
 
 @Component({
   selector: 'app-home',
@@ -13,9 +13,17 @@ import { Slide, ToolGraphQL } from '../../../shared/core';
 export class HomeComponent {
 
     // Get Home page data from GraphQL
-    imageSlides: Observable<Slide[]> = this.home.getHomePageData().pipe(
+    pageData: Observable<any> = this.home.getHomePageData().pipe(share());
+
+    // Get tag logos
+    imageSlides: Observable<Slide[]> = this.pageData.pipe(
         // Map GraphQL query to structured array
         map(({data}) => this.mapToolGraphQL(data.allTools))
+    );
+
+    // Get latest posts
+    posts: Observable<PostGraphQL[]> = this.pageData.pipe(
+        map(({data}) => data.allPost)
     );
 
     constructor(private home: HomeService) { }
