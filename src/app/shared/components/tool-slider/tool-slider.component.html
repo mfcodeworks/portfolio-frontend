@@ -1,5 +1,5 @@
 <div class='slider tns-slider'>
-    <a [routerLink]='["tag", s.alt]' *ngFor='let s of tools' class='item tns-slide'>
+    <a [routerLink]='["/", "blog", "tag", s.alt]' *ngFor='let s of tools' class='item tns-slide'>
         <img *ngIf='s.image' [src]='s.image' [alt]='s.image' width='100'/>
         <video *ngIf='s.video' [poster]='s.posterImage' autoplay>
             <source [src]='s.video' [type]='s.videoType'>

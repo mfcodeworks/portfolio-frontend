@@ -1,6 +1,6 @@
 <article class='card'>
     <div class='card-image'>
-        <a [routerLink]="['article', p.slug.current]">
+        <a [routerLink]="['/', 'blog', 'article', p.slug.current]">
             <figure class='image'>
                 <img class='post-hero' [src]='p.mainImage.asset.url + "?h=500"' [alt]='p.title'>
             </figure>
@@ -11,7 +11,7 @@
         <div class="media">
             <div class="media-content">
                 <p>
-                    <a class="title is-4 split-text" [routerLink]="['article', p.slug.current]">
+                    <a class="title is-4 split-text" [routerLink]="['/', 'blog', 'article', p.slug.current]">
                         <span>{{ p.title }}</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
@@ -34,7 +34,7 @@
             </time>
             <br /><br />
             <p>
-                <a class='subtitle is-7 has-text-grey' *ngFor='let t of p.tags; let i = index' [routerLink]="['tag', t.slug.current]">
+                <a class='subtitle is-7 has-text-grey' *ngFor='let t of p.tags; let i = index' [routerLink]="['/', 'blog', 'tag', t.slug.current]">
                     {{ t.title | titlecase }}<ng-container *ngIf='i < (p.tags.length-1)'>,</ng-container>
                 </a>
             </p>
