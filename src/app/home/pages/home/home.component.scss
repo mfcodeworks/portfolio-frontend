@@ -29,9 +29,7 @@
                 height: 100%;
             }
         }
-    }
-    @media (max-width: 500px) {
-        .image-grid {
+        @media (max-width: 500px) {
             margin-top: 2rem;
             figure {
                 margin: 1rem;
@@ -60,5 +58,12 @@
 .buttons.is-centered {
     .button {
         margin: 1rem;
+    }
+}
+
+.is-mobile {
+    display: none;
+    @media(max-width: 768px) {
+        display: block;
     }
 }
