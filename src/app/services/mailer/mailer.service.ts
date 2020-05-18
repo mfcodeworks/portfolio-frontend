@@ -13,12 +13,12 @@ export class MailerService {
     // Send email form
     send(subject: string, text: string, replyTo?: string): Observable<any> {
         // Build email
-        const email = new FormData();
-        email.append('from', environment.mailer.from);
-        email.append('to', environment.mailer.to);
-        email.append('subject', subject);
-        email.append('text', text);
-        !!replyTo && email.append('h:Reply-To', replyTo);
+        const email = {
+          subject,
+          text,
+          replyTo,
+          ...environment.mailer
+        };
 
         // Send email
         return this.http.post<any>(environment.mailer.api, email);
