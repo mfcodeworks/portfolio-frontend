@@ -75,6 +75,9 @@ export class ContactComponent {
             this.processing.next(false)
             this.error.next(e);
             setTimeout(() => this.error.next(''), this.notificationTimeout);
+
+            // Reset form
+            this.emailForm.reset();
         });
     }
 }
