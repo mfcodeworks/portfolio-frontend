@@ -27,6 +27,9 @@
                     *ngFor='let p of posts'
                     (openAuthor)='openModal($event)'
                     [post]='p'></app-post-preview>
+                <p *ngIf='(postCount | async) < 1' class='subtitle is-size-5 is-size-6-mobile'>
+                    Nothing here, <a routerLink='/blog' class='subtitle is-size-5 is-size-6-mobile has-text-underlined'>keep looking</a>?
+                </p>
             </div>
 
             <div class='column is-one-fifth'></div>
