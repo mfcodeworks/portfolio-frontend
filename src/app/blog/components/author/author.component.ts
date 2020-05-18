@@ -11,6 +11,8 @@ import { map, tap } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AuthorComponent implements OnInit {
+    // TODO: Change to entry component
+
     @Input('slug') slug: string;
     @Output('close') close: EventEmitter<string> = new EventEmitter();
 
