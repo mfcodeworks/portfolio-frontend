@@ -31,6 +31,7 @@
                                         formControlName="email"
                                         placeholder="Email"
                                         type="email"
+                                        name="email"
                                         class="input" />
 
                                     <span class="icon is-small is-left">
@@ -50,6 +51,7 @@
                                         formControlName="subject"
                                         class="input"
                                         type="text"
+                                        name="subject"
                                         placeholder="Subject" />
 
                                     <span *ngIf='getErrors("subject")' class="icon is-small is-right">
@@ -64,6 +66,7 @@
                                     <textarea [class.is-danger]='getErrors("message")'
                                         formControlName="message"
                                         placeholder="Message"
+                                        name="message"
                                         class="textarea"></textarea>
                                 </div>
                                 <p *ngIf='getErrors("message")' class="help is-danger">{{ getErrors('message') | titlecase }}</p>
