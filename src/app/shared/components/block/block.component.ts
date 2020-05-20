@@ -54,7 +54,7 @@ export class BlockComponent implements OnChanges, AfterViewChecked {
                 return h('blockqoute', {className: 'subtitle is-2'}, props.children);
 
             default:
-                return h('p', null, props.children);
+                return h('p', props.children);
         }
     };
 
