@@ -59,13 +59,12 @@ export class ContactComponent {
             this.emailForm.controls['email'].value
 
         // Complete processing
-        ).subscribe(r => {
-            // Log success
-            console.log(r);
-
+        ).subscribe(_ => {
             // Set processing complete
             this.processing.next(false)
             this.complete.next(true);
+
+            // Remove notification
             setTimeout(() => this.complete.next(false), this.notificationTimeout);
         }, e => {
             // Log error
@@ -73,7 +72,9 @@ export class ContactComponent {
 
             // Set processing error
             this.processing.next(false)
-            this.error.next(e);
+            this.error.next(e.message);
+
+            // Remove notification
             setTimeout(() => this.error.next(''), this.notificationTimeout);
 
             // Reset form
