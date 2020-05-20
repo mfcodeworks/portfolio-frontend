@@ -22,14 +22,15 @@ export class BlockComponent implements OnChanges, AfterViewChecked {
     // URL Link Renderer
     linkRenderer = props => (
         h('a', {
-            className: 'has-text-weight-medium has-text-grey-darker has-text-underlined'
+            className: 'has-text-weight-medium has-text-grey-darker has-text-underlined',
+            href: props.mark.href,
+            target: '_blank'
         }, props.children)
     );
 
     // Code Snippet Renderer
     codeRenderer = props => {
         props.node.language = this.languageModifier(props.node.language);
-        console.log(props.node);
         return h('pre', {className: `${props.node.code.indexOf('\n') > -1 && 'line-numbers'} language-${props.node.language}`},
             h('code', {innerHTML: Prism.highlight(props.node.code, Prism.languages[props.node.language], props.node.language)})
         )

@@ -7,24 +7,34 @@ import { PostComponent } from './pages/post/post.component';
 export const routes: Routes = [
     {
         path: '',
-        children: [
-            {
-                path: '',
-                component: PostsComponent
-            },
-            {
-                path: 'category/:category',
-                component: SearchComponent
-            },
-            {
-                path: 'tag/:tag',
-                component: SearchComponent
-            },
-            {
-                path: 'article/:slug',
-                component: PostComponent
-            }
-        ]
+        component: PostsComponent
+    },
+    {
+        path: 'article',
+        redirectTo: '',
+        pathMatch: 'full'
+    },
+    {
+        path: 'tag',
+        redirectTo: '',
+        pathMatch: 'full'
+    },
+    {
+        path: 'category',
+        redirectTo: '',
+        pathMatch: 'full'
+    },
+    {
+        path: 'category/:category',
+        component: SearchComponent
+    },
+    {
+        path: 'tag/:tag',
+        component: SearchComponent
+    },
+    {
+        path: 'article/:slug',
+        component: PostComponent
     }
 ];
 

@@ -4,12 +4,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 
 export const routes: Routes = [{
     path: '',
-    children: [
-        {
-            path: '',
-            component: ContactComponent
-        }
-    ]
+    component: ContactComponent
 }];
 
 @NgModule({
