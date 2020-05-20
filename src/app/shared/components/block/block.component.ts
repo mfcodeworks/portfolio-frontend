@@ -28,10 +28,10 @@ export class BlockComponent implements OnChanges, AfterViewChecked {
 
     // Code Snippet Renderer
     codeRenderer = props => {
-        console.log(props.node);
         props.node.language = this.languageModifier(props.node.language);
-        return h('pre', {className: `line-numbers language-${props.node.language}`},
-            h('code', {innerHTML: Prism.highlight(props.node.code, Prism.languages[props.node.language])})
+        console.log(props.node);
+        return h('pre', {className: `${props.node.code.indexOf('\n') > -1 && 'line-numbers'} language-${props.node.language}`},
+            h('code', {innerHTML: Prism.highlight(props.node.code, Prism.languages[props.node.language], props.node.language)})
         )
     };
 
@@ -88,8 +88,8 @@ export class BlockComponent implements OnChanges, AfterViewChecked {
 
     // Modify language input for prism.js
     languageModifier(str: string): string {
-        return str.replace('javascript', 'typescript')
-            .replace('js', 'ts')
-            .replace('sh', 'bash');
+        return str.replace(/^javascript$/, 'typescript')
+            .replace(/^js$/, 'ts')
+            .replace(/^sh$/, 'bash');
     }
 }
