@@ -3,7 +3,7 @@
 <section class='section'>
     <div class='container'>
         <h1 class='title is-8'>{{ title }}</h1>
-        <h1 class='title is-8' *ngIf='loading | async'>
+        <h1 class='title is-8' *ngIf='!title && loading | async'>
             <ngx-skeleton-loader
                 appearance="line"
                 [theme]="{height: '3rem', width: '10rem'}">
@@ -67,6 +67,8 @@
     </div>
 </section>
 
-<app-modal *ngFor='let a of authors' [name]='a.slug.current'>
-    <app-author (close)='closeModal($event)' [slug]='a.slug.current'></app-author>
-</app-modal>
+<app-author *ngFor='let a of authors'
+    [name]='a.slug.current'
+    (close)='closeModal($event)'
+    [slug]='a.slug.current'>
+</app-author>

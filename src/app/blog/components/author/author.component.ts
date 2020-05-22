@@ -14,6 +14,7 @@ export class AuthorComponent implements OnInit {
     // TODO: Change to entry component
 
     @Input('slug') slug: string;
+    @Input('name') name: string;
     @Output('close') close: EventEmitter<string> = new EventEmitter();
 
     // Get author

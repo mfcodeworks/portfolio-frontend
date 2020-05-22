@@ -1,5 +1,5 @@
-<ng-container *ngIf='author | async; let a'>
-    <header class="modal-card-head">
+<app-modal *ngIf='author | async; let a' [name]='name'>
+    <ng-container header>
         <div class="media is-vcentered">
             <div class="media-left">
                 <figure class="image">
@@ -15,15 +15,17 @@
                 </p>
             </div>
         </div>
-    </header>
+    </ng-container>
 
-    <section class='modal-card-body'>
+    <ng-container body>
         <div class='content'>
             <app-block [block]='a.bioRaw'></app-block>
         </div>
-    </section>
+    </ng-container>
 
-    <footer class="modal-card-foot buttons is-right">
-        <button class="button is-info" (click)='closeModal(a.slug.current)'>Close</button>
-    </footer>
-</ng-container>
+    <ng-container footer>
+        <div class='container buttons is-right'>
+            <button class="button is-info" (click)='closeModal(a.slug.current)'>Close</button>
+        </div>
+    </ng-container>
+</app-modal>

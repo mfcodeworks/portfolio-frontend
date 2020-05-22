@@ -5,6 +5,7 @@ import { PostGraphQL, TagGraphQL, CategoryGraphQL, AuthorGraphQL } from '../../.
 import { Observable, BehaviorSubject } from 'rxjs';
 import { map, share, switchMap, tap } from 'rxjs/operators';
 import { ModalService } from '../../../services/modal/modal.service';
+import { SEOService } from '../../../services/seo/seo.service';
 
 @Component({
     selector: 'app-search',
@@ -28,11 +29,17 @@ export class SearchComponent {
         map(m => m.get('category') || m.get('tag')),
         // Set page title
         tap(d => this.title.next(d)),
+        // Set SEO
+        tap(d => {
+            this.seo.setTitle(`MF Codeworks - ${d}`);
+            this.seo.setDescription(`Latest for ${d} Tech Articles`);
+        }),
         // Switch filter type
         switchMap(d => {
             return this.isCategory.pipe(
                 // Return tag or category
                 switchMap(c => {
+                    // Fetch articles
                     if (c) {
                         return this.blog.getCategoryID(d).pipe(
                             map(({data}) => data.allCategory[0])
@@ -76,7 +83,8 @@ export class SearchComponent {
     constructor(
         private router: ActivatedRoute,
         private blog: BlogService,
-        private modals: ModalService
+        private modals: ModalService,
+        private seo: SEOService
     ) { }
 
     openModal(name: string): void {

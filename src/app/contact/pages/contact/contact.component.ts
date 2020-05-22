@@ -1,8 +1,9 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MailerService } from '../../../services/mailer/mailer.service';
 import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { SEOService } from '../../../services/seo/seo.service';
 
 @Component({
     selector: 'app-contact',
@@ -10,7 +11,7 @@ import { tap } from 'rxjs/operators';
     styleUrls: ['./contact.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ContactComponent {
+export class ContactComponent implements OnInit {
 
     // Notification timeout
     notificationTimeout = 5000;
@@ -27,8 +28,14 @@ export class ContactComponent {
 
     constructor(
         private fb: FormBuilder,
-        private mailer: MailerService
+        private mailer: MailerService,
+        private seo: SEOService
     ) {}
+
+    ngOnInit(): void {
+        this.seo.setTitle(`MF Codeworks - Contact`);
+        this.seo.setDescription(`Contact Arran Fletcher for Projects & Offers`);
+    }
 
     getErrors(control: string): string {
         if (this.emailForm.untouched) {

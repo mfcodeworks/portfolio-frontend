@@ -1,10 +1,11 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { BlogService } from '../../../services/blog/blog.service';
 import { ActivatedRoute } from '@angular/router';
-import { map, switchMap, share } from 'rxjs/operators';
+import { map, switchMap, share, tap } from 'rxjs/operators';
 import { PostGraphQL, CategoryGraphQL, TagGraphQL, AuthorGraphQL } from '../../../shared/core';
 import { Observable } from 'rxjs';
 import { ModalService } from '../../../services/modal/modal.service';
+import { SEOService } from '../../../services/seo/seo.service';
 
 @Component({
     selector: 'app-posts',
@@ -20,6 +21,11 @@ export class PostsComponent {
     // Consolidate page data
     pageData: Observable<any> = this.router.queryParamMap.pipe(
         map(m => parseInt(m.get('page') || '1')),
+        // Set SEO
+        tap(_ => {
+            this.seo.setTitle(`MF Codeworks - ${this.title}`);
+            this.seo.setDescription(`${this.title} for Tech`);
+        }),
         switchMap(p => this.blog.getBlogPosts(10 * --p)),
         share()
     );
@@ -43,7 +49,8 @@ export class PostsComponent {
     constructor(
         private blog: BlogService,
         private modals: ModalService,
-        private router: ActivatedRoute
+        private router: ActivatedRoute,
+        private seo: SEOService
     ) { }
 
     openModal(name: string): void {

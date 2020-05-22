@@ -1,6 +1,16 @@
 <section class="modal" [attr.data-modal]='name'>
     <div class="modal-background"></div>
     <div class="modal-card">
-        <ng-content></ng-content>
+        <header class="modal-card-head">
+            <ng-content select='[header]'></ng-content>
+        </header>
+
+        <section class='modal-card-body'>
+            <ng-content select='[body]'></ng-content>
+        </section>
+
+        <footer class="modal-card-foot">
+            <ng-content select='[footer]'></ng-content>
+        </footer>
     </div>
 </section>

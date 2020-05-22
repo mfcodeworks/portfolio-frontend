@@ -1,14 +1,12 @@
 @import "~tiny-slider/dist/tiny-slider.css";
 @import "~prismjs/themes/prism-okaidia.css";
 @import "~prismjs/plugins/line-numbers/prism-line-numbers.css";
-@import "~@fortawesome/fontawesome-free/css/all.min.css";
-@import "~bulma/css/bulma.min.css";
 
 /* Display Optimization */
 html {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    overflow-y: auto;
+    // overflow-y: auto;
 }
 
 /* Full width body with sticky footer */
@@ -105,3 +103,7 @@ pre {
 .has-text-underlined {
     text-decoration: underline;
 }
+
+// Allow vendor override
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+@import "~bulma/css/bulma.min.css";

@@ -144,6 +144,8 @@
     </section>
 </article>
 
-<app-modal *ngIf='author | async; let a' [name]='a.slug.current'>
-    <app-author (close)='closeModal($event)' [slug]='a.slug.current'></app-author>
-</app-modal>
+<app-author *ngIf='author | async; let a'
+    [name]='a.slug.current'
+    (close)='closeModal($event)'
+    [slug]='a.slug.current'>
+</app-author>
