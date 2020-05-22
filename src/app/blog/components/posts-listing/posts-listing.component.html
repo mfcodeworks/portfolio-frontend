@@ -3,18 +3,30 @@
 <section class='section'>
     <div class='container'>
         <h1 class='title is-8'>{{ title }}</h1>
+        <h1 class='title is-8' *ngIf='loading | async'>
+            <ngx-skeleton-loader
+                appearance="line"
+                [theme]="{height: '3rem', width: '10rem'}">
+            </ngx-skeleton-loader>
+        </h1>
 
         <div class='columns is-centered'>
             <div class='column is-one-fifth'>
                 <aside class='menu'>
                     <p class='menu-label'>Categories</p>
                     <ul class='menu-list'>
+                        <li *ngIf='loading | async'>
+                            <ngx-skeleton-loader count="2" appearance="line"></ngx-skeleton-loader>
+                        </li>
                         <li *ngFor='let c of categories'>
                             <a [routerLink]="['/', 'blog', 'category', c.title]">{{ c.title }}</a>
                         </li>
                     </ul>
                     <p class='menu-label is-hidden-mobile'>Tags</p>
                     <ul class='menu-list is-hidden-mobile'>
+                        <li *ngIf='loading | async'>
+                            <ngx-skeleton-loader count="5" appearance="line"></ngx-skeleton-loader>
+                        </li>
                         <li *ngFor='let t of tags'>
                             <a [routerLink]="['/', 'blog', 'tag', t.slug.current]">{{ t.title | titlecase }}</a>
                         </li>
@@ -23,6 +35,24 @@
             </div>
 
             <div class='column is-three-fifths'>
+                <ng-container *ngIf='loading | async'>
+                    <ngx-skeleton-loader
+                        appearance="line"
+                        [theme]="{height: '18rem'}">
+                    </ngx-skeleton-loader>
+                    <ngx-skeleton-loader
+                        appearance="line"
+                        [theme]="{height: '2rem'}">
+                    </ngx-skeleton-loader>
+                    <ngx-skeleton-loader
+                        appearance="line"
+                        [theme]="{width: '10rem'}">
+                    </ngx-skeleton-loader>
+                    <ngx-skeleton-loader
+                        appearance="line">
+                    </ngx-skeleton-loader>
+                </ng-container>
+
                 <app-post-preview
                     *ngFor='let p of posts'
                     (openAuthor)='openModal($event)'

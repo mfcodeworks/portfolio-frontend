@@ -1,5 +1,68 @@
 <app-navbar color='black'></app-navbar>
 
+<ng-container *ngIf='loading | async'>
+    <section class='section' id='title'>
+        <div class='columns is-centered'>
+            <div class='column is-half'>
+                <h1 class='title is-2'>
+                    <ngx-skeleton-loader
+                        appearance="line"
+                        [theme]="{height: '5rem', marginTop: '5rem'}">
+                    </ngx-skeleton-loader>
+                </h1>
+                <div class="media">
+                    <div class="media-left">
+                        <ngx-skeleton-loader
+                            appearance="circle"
+                            [theme]="{height: '3.5rem', width: '3.5rem'}">
+                        </ngx-skeleton-loader>
+                    </div>
+                    <div class="media-content">
+                        <p>
+                            <a class='title is-6'>
+                                <ngx-skeleton-loader
+                                    appearance="line"
+                                    [theme]="{
+                                        marginTop: '0.5rem',
+                                        height: '1rem',
+                                        width: '8rem'
+                                    }">
+                                </ngx-skeleton-loader>
+                            </a>
+                            <br />
+                            <time class="subtitle is-6">
+                                <ngx-skeleton-loader
+                                    appearance="line"
+                                    [theme]="{height: '1rem', width: '6rem'}">
+                                </ngx-skeleton-loader>
+                            </time>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class='content' id='tag-container'>
+        <div class='columns is-centered'>
+            <div class='column is-half'>
+                <ngx-skeleton-loader
+                    appearance="line"
+                    [theme]="{height: '1rem', marginBottom: 0}">
+                </ngx-skeleton-loader>
+            </div>
+        </div>
+    </div>
+
+    <section class="hero is-fullwidth has-background">
+        <ngx-skeleton-loader
+            appearance="line"
+            [theme]="{height: '24rem', marginBottom: '6rem'}">
+        </ngx-skeleton-loader>
+    </section>
+</ng-container>
+
+
 <article *ngIf='post | async; let p'>
     <div class='content'>
         <nav class="breadcrumb" aria-label="breadcrumbs">

@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
     styleUrls: ['./posts-listing.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PostsListingComponent implements OnChanges {
+export class PostsListingComponent implements OnChanges, OnChanges {
     @Input() title: string;
     @Input() posts: PostGraphQL[];
     @Input() categories: CategoryGraphQL[];
@@ -17,9 +17,11 @@ export class PostsListingComponent implements OnChanges {
     @Output('openModal') open: EventEmitter<string> = new EventEmitter();
     @Output('closeModal') close: EventEmitter<string> = new EventEmitter();
     postCount: BehaviorSubject<number> = new BehaviorSubject(1);
+    loading: BehaviorSubject<boolean> = new BehaviorSubject(true);
 
     ngOnChanges(): void {
-        this.postCount.next(this.posts?.length)
+        this.loading.next(!this.categories?.length);
+        this.postCount.next(this.posts?.length);
     }
 
     openModal(name: string): void {

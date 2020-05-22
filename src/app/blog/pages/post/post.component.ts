@@ -15,6 +15,10 @@ import { ModalService } from '../../../services/modal/modal.service';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PostComponent {
+
+    // Loading state
+    loading: BehaviorSubject<boolean> = new BehaviorSubject(true);
+
     // Sanitized preview URL
     previewURL: BehaviorSubject<SafeResourceUrl> = new BehaviorSubject('');
 
@@ -23,6 +27,7 @@ export class PostComponent {
         map(m => m.get('slug')),
         switchMap(s => this.blog.getBlogPost(s)),
         map(({data}) => data.allPost[0]),
+        tap(_ => this.loading.next(false)),
         share()
     );
 
