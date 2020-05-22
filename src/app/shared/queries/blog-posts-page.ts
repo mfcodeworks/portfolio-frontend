@@ -7,6 +7,9 @@ export const BlogPostsPage = gql`query BlogPosts(
     allPost(
         limit: $limit
         offset: $offset
+        sort: [{
+            publishedAt: DESC
+        }]
     ) {
         title
         slug {

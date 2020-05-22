@@ -13,6 +13,9 @@ export const BlogPostsPageFiltered = gql`query BlogPostsFiltered(
                 references: $ref
             }
         }
+        sort: [{
+            publishedAt: DESC
+        }]
     ) {
         title
         slug {
