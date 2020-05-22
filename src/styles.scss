@@ -83,7 +83,7 @@ pre {
             margin: auto;
             display: block;
             @media (max-width: 768px) {
-                width: 100%;
+                max-width: 100%;
             }
         }
     }
