@@ -79,7 +79,7 @@ pre {
         right: 50%;
         margin-bottom: 1rem;
         img {
-            width: 80%;
+            max-width: 80%;
             margin: auto;
             display: block;
             @media (max-width: 768px) {
