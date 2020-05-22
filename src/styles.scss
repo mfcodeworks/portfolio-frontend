@@ -2,7 +2,7 @@
 @import "~prismjs/themes/prism-okaidia.css";
 @import "~prismjs/plugins/line-numbers/prism-line-numbers.css";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
-@import "~bulma";
+@import "~bulma/css/bulma.min.css";
 
 /* Display Optimization */
 html {
@@ -88,6 +88,16 @@ pre {
                 width: 100%;
             }
         }
+    }
+
+    /* Code styling */
+    .number {
+        background-color: transparent !important;
+        padding: inherit !important;
+        margin: inherit !important;
+        display: inherit !important;
+        height: inherit !important;
+        font-size: inherit !important;
     }
 }
 
