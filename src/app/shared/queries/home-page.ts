@@ -7,6 +7,9 @@ export const HomePage = gql`query Home(
     allPost(
         limit: $limit
         offset: $offset
+        sort: [{
+            publishedAt: DESC
+        }]
     ) {
         title
         slug {
