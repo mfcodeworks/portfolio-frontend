@@ -4,13 +4,8 @@
         <meta charset="utf-8">
         <title>Arran Fletcher - Software Engineer</title>
         <script>
-          console.log(
-            window.location.pathname, 
-            window.location.pathname.indexOf('ipfs'), 
-            window.location.pathname.split('/').slice(0,3).join('/')
-          );
           window.location.pathname.indexOf('ipfs') > -1
-            ? document.write(`<base href="${window.location.pathname.split('/').slice(0,3).join('/')}"/>`)
+            ? document.write(`<base href="${window.location.pathname.split('/').slice(0,3).join('/')}/"/>`)
             : document.write(`<base href="/"/>`)
         </script>
 
