@@ -4,7 +4,9 @@
         <meta charset="utf-8">
         <title>Arran Fletcher - Software Engineer</title>
         <script>
-            document.write(`<base href="${window.location.pathname}"/>`);
+            window.location.pathname.indexOf('/') > -1
+            ? document.write(`<base href="/"/>`)
+            : document.write(`<base href="${window.location.pathname.split('/').slice(0,1).join('/')}"/>`);
         </script>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
