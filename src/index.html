@@ -5,6 +5,7 @@
         <title>Arran Fletcher - Software Engineer</title>
         <script>
           window.location.pathname.indexOf('ipfs') > -1
+          || window.location.pathname.indexOf('ipns') > -1
             ? document.write(`<base href="${window.location.pathname.split('/').slice(0,3).join('/')}/"/>`)
             : document.write(`<base href="/"/>`)
         </script>
