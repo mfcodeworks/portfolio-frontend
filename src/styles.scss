@@ -1,6 +1,8 @@
 @import "~tiny-slider/dist/tiny-slider.css";
 @import "~prismjs/themes/prism-okaidia.css";
 @import "~prismjs/plugins/line-numbers/prism-line-numbers.css";
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+@import "~bulma/css/bulma.min.css";
 
 /* Display Optimization */
 html {
@@ -48,17 +50,17 @@ pre {
 .styled-list {
     ul {
         list-style-type: disc;
-        list-style-position: inside;
-        ul {
-            margin-left: 1rem;
-            list-style-type: circle;
-        }
-    }
+        list-style-position: outside;
+        padding-left: 1.6rem;
 
-    /* Space list items on small devices */
-    @media (max-width: 769px) {
+        /* List item spacing */
         li {
-            margin: 1rem 0;
+            margin: 0.5rem 0;
+        }
+
+        /* Nested list syling */
+        ul {
+            list-style-type: circle;
         }
     }
 }
@@ -104,6 +106,7 @@ pre {
     text-decoration: underline;
 }
 
-// Allow vendor override
-@import "~@fortawesome/fontawesome-free/css/all.min.css";
-@import "~bulma/css/bulma.min.css";
+/* Wrap long breadcrumbs */
+.breadcrumb {
+    white-space: pre-wrap;
+}
