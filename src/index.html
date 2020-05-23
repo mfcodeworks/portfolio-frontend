@@ -6,7 +6,7 @@
         <script>
             window.location.pathname.indexOf('/') > -1
             ? document.write(`<base href="/"/>`)
-            : document.write(`<base href="${window.location.pathname.split('/').slice(0,1).join('/')}"/>`);
+            : document.write(`<base href="${window.location.pathname.split('/').slice(0,3).join('/')}"/>`);
         </script>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
