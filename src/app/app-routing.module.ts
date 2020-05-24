@@ -17,7 +17,7 @@ const routes: Routes = [
 ];
 
 const options: ExtraOptions = {
-    useHash: ['ipfs', 'ipns'].includes(window.location.pathname.split('/')[1].toLowerCase()),
+    useHash: (['ipfs', 'ipns']).includes(window.location.pathname.split('/')[1].toLowerCase()),
     scrollPositionRestoration: 'enabled',
     anchorScrolling: 'enabled'
 };
