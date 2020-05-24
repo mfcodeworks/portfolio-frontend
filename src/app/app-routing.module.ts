@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 
+const ipfs = ['ipfs', 'ipns'];
+
 const routes: Routes = [
     {
         path: '',
@@ -17,7 +19,7 @@ const routes: Routes = [
 ];
 
 const options: ExtraOptions = {
-    useHash: false,
+    useHash: ipfs.includes(window.location.pathname.split('/')[1].toLowerCase()),
     scrollPositionRestoration: 'enabled',
     anchorScrolling: 'enabled'
 };
