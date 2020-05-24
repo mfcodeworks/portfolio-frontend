@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 
+const ipfs = ['ipfs', 'ipns'];
+const useHash = ipfs.includes(window.location.pathname.split('/')[1].toLowerCase());
+
 const routes: Routes = [
     {
         path: '',
@@ -16,10 +19,10 @@ const routes: Routes = [
     }
 ];
 
+console.log('Using hash location', useHash);
 const options: ExtraOptions = {
-    useHash: false,
-    scrollPositionRestoration: 'enabled',
-    anchorScrolling: 'enabled'
+    useHash,
+    scrollPositionRestoration: 'enabled'
 };
 
 @NgModule({
