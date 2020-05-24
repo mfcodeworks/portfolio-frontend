@@ -2,7 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 
 const ipfs = ['ipfs', 'ipns'];
-const useHash = ipfs.includes(window.location.pathname.split('/')[1].toLowerCase());
+
+// Test subpage (IPFS gateway) or domain (IPFS subdomain)
+const useHash = ipfs.includes(
+    window.location.pathname.split('/')[1].toLowerCase() ||
+    window.location.host.split('.')[0]
+);
 
 const routes: Routes = [
     {
@@ -19,7 +24,6 @@ const routes: Routes = [
     }
 ];
 
-console.log('Using hash location', useHash);
 const options: ExtraOptions = {
     useHash,
     scrollPositionRestoration: 'enabled'
