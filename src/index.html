@@ -9,7 +9,7 @@
             const host = window.location.host.split('.');
             ipfs.includes(path[1].toLowerCase())
                 ? document.write(`<base href="${path.join('/')}/#/"/>`)
-                : document.write(`<base href="/${host[0] === 'ipfs' && '#/'}"/>`);
+                : document.write(`<base href="/${host[0] === 'ipfs' ? '#/' : ''}"/>`);
         </script>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
