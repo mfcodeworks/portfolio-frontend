@@ -4,10 +4,12 @@
         <meta charset="utf-8">
         <title>Arran Fletcher - Software Engineer</title>
         <script>
-          window.location.pathname.indexOf('ipfs') > -1
-          || window.location.pathname.indexOf('ipns') > -1
-            ? document.write(`<base href="${window.location.pathname.split('/').slice(0,3).join('/')}/"/>`)
-            : document.write(`<base href="/"/>`)
+            const path = window.location.pathname.split('/').slice(0,3);
+            console.log(path);
+            window.location.pathname.indexOf('ipfs') > -1
+            || window.location.pathname.indexOf('ipns') > -1
+                ? document.write(`<base href="${window.location.pathname.split('/').slice(0,3).join('/')}/"/>`)
+                : document.write(`<base href="/"/>`);
         </script>
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
