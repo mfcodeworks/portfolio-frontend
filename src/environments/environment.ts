@@ -11,7 +11,11 @@ export const environment = {
     sanity: {
         projectId: '682knlgh',
         dataset: 'production',
-        useCdn: false
+        imageOptions: {
+            useCdn: true,
+            auto: 'format',
+            fit: 'max'
+        }
     },
     mailer: {
         from: 'MF Codeworks Test <mfcodeworks@gmail.com>',

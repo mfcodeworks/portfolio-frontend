@@ -2,7 +2,7 @@
     <div class='card-image'>
         <a [routerLink]="['/', 'blog', 'article', p.slug.current]">
             <figure class='image'>
-                <img class='post-hero' [src]='p.mainImage.asset.url + "?h=500"' [alt]='p.title'>
+                <img class='post-hero' [src]='p.mainImage.asset.url + "?fit=max&auto=format"' [alt]='p.title' />
             </figure>
         </a>
     </div>
@@ -27,12 +27,12 @@
         <div class="content">
             <p class='subtitle is-6'>
                 {{ p.excerpt }}
-                <br />
+                <br/>
             </p>
             <time class='subtitle is-6' [dateTime]="p.publishedAt">
                 {{ p.publishedAt | date:'mediumDate' }}
             </time>
-            <br /><br />
+            <br/><br/>
             <p>
                 <a class='subtitle is-7 has-text-grey' *ngFor='let t of p.tags; let i = index' [routerLink]="['/', 'blog', 'tag', t.slug.current]">
                     {{ t.title | titlecase }}<ng-container *ngIf='i < (p.tags.length-1)'>,</ng-container>

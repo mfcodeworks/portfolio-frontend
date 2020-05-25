@@ -29,7 +29,7 @@
                                     }">
                                 </ngx-skeleton-loader>
                             </a>
-                            <br />
+                            <br/>
                             <time class="subtitle is-6">
                                 <ngx-skeleton-loader
                                     appearance="line"
@@ -85,8 +85,8 @@
                         <a (click)='openModal(p.author.slug.current)'>
                             <figure class="image">
                                 <img class='avatar'
-                                    [src]="p.author.image.asset.url + '?w=100'"
-                                    [alt]="p.author.name">
+                                    [src]="p.author.image.asset.url + '?w=100&auto=format'"
+                                    [alt]="p.author.name" />
                             </figure>
                         </a>
                     </div>
@@ -95,7 +95,7 @@
                             <a class='title is-6' (click)='openModal(p.author.slug.current)'>
                                 {{ p.author.name }}
                             </a>
-                            <br />
+                            <br/>
                             <time class="subtitle is-6" [dateTime]="p.publishedAt">
                                 {{ p.publishedAt | date:'mediumDate' }}
                             </time>
@@ -121,7 +121,7 @@
     <section class="hero is-fullwidth has-background">
         <img class="hero-background is-transparent"
             [alt]="p.title"
-            [src]="p.mainImage.asset.url" />
+            [src]="p.mainImage.asset.url + '?fit=max&auto=format'" />
     </section>
 
     <section class='section'>
