@@ -84,7 +84,7 @@
                     <div class="media-left">
                         <a (click)='openModal(p.author.slug.current)'>
                             <figure class="image">
-                                <img class='avatar'
+                                <img loading='lazy' class='avatar'
                                     [src]="p.author.image.asset.url + '?w=100&auto=format'"
                                     [alt]="p.author.name" />
                             </figure>
@@ -119,7 +119,7 @@
     </div>
 
     <section class="hero is-fullwidth has-background">
-        <img class="hero-background is-transparent"
+        <img loading='eager' class="hero-background is-transparent"
             [alt]="p.title"
             [src]="p.mainImage.asset.url + '?fit=max&auto=format'" />
     </section>

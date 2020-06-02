@@ -5,7 +5,7 @@ import blocksToHtml from '@sanity/block-content-to-html';
 import { environment } from '../../../../environments/environment';
 
 declare var Prism;
-const h = blocksToHtml.h;
+const {h, getImageUrl} = blocksToHtml;
 
 @Component({
     selector: 'app-block',
@@ -18,6 +18,16 @@ export class BlockComponent implements OnChanges, AfterViewChecked {
 
     // Post-rendered body HTML
     bodyHtml: BehaviorSubject<SafeHtml> = new BehaviorSubject({});
+
+    // Image Renderer
+    imageRenderer = props => {
+        if (!props.node.asset) {
+            return null
+        }
+
+        const img = h('img', {src: getImageUrl(props), loading:'lazy'})
+        return props.isInline ? img : h('figure', null, img)
+    }
 
     // URL Link Renderer
     linkRenderer = props => (
@@ -68,7 +78,8 @@ export class BlockComponent implements OnChanges, AfterViewChecked {
             serializers: {
                 types: {
                     code: this.codeRenderer,
-                    block: this.blockRenderer
+                    block: this.blockRenderer,
+                    image: this.imageRenderer
                 },
                 marks: {
                     link: this.linkRenderer

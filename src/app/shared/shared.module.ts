@@ -10,6 +10,11 @@ import { PostPreviewComponent } from './components/post-preview/post-preview.com
 import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
+  imports: [
+    CommonModule,
+    RouterModule,
+    NgxSkeletonLoaderModule
+  ],
   declarations: [
     NavbarComponent,
     FooterComponent,
@@ -17,11 +22,6 @@ import { FooterComponent } from './components/footer/footer.component';
     BlockComponent,
     ModalComponent,
     PostPreviewComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    NgxSkeletonLoaderModule
   ],
   exports: [
     CommonModule,

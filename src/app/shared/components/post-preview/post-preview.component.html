@@ -2,7 +2,7 @@
     <div class='card-image'>
         <a [routerLink]="['/', 'blog', 'article', p.slug.current]">
             <figure class='image'>
-                <img class='post-hero' [src]='p.mainImage.asset.url + "?fit=max&auto=format"' [alt]='p.title' />
+                <img loading='lazy' class='post-hero' [src]='p.mainImage.asset.url + "?fit=max&auto=format"' [alt]='p.title' />
             </figure>
         </a>
     </div>
