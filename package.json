@@ -1,15 +1,15 @@
 {
   "name": "portfolio",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:prod": "ng build --prod --aot --build-optimizer",
+    "build:prod": "npm run build -- --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "analyze": "ng build --stats-json && webpack-bundle-analyzer www/stats-es2015.json"
+    "analyze": "npm run build -- --stats-json && webpack-bundle-analyzer www/stats-es2015.json"
   },
   "private": true,
   "dependencies": {
