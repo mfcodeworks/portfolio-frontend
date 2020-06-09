@@ -27,16 +27,16 @@
     "apollo-angular": "^1.9.1",
     "apollo-angular-link-http": "^1.10.0",
     "apollo-cache-inmemory": "^1.6.0",
-    "apollo-client": "^2.6.0",
+    "apollo-client": "^2.6.10",
     "apollo-link": "^1.2.11",
     "bulma": "^0.8.2",
     "graphql": "^14.6.0",
     "graphql-tag": "^2.10.0",
-    "ngx-skeleton-loader": "^2.0.0",
+    "ngx-skeleton-loader": "^2.2.0",
     "prismjs": "^1.20.0",
     "rxjs": "~6.5.4",
     "tiny-slider": "^2.9.2",
-    "tslib": "^1.10.0",
+    "tslib": "^1.13.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
@@ -46,7 +46,7 @@
     "@angular/language-service": "~9.1.9",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
-    "@types/node": "^12.11.1",
+    "@types/node": "^12.12.45",
     "codelyzer": "^5.1.2",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
@@ -54,11 +54,11 @@
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage-istanbul-reporter": "~2.1.0",
     "karma-jasmine": "~3.0.1",
-    "karma-jasmine-html-reporter": "^1.4.2",
+    "karma-jasmine-html-reporter": "^1.5.4",
     "protractor": "~5.4.3",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.8.3",
-    "webpack-bundle-analyzer": "^3.7.0"
+    "webpack-bundle-analyzer": "^3.8.0"
   }
 }
