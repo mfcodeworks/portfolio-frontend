@@ -1,35 +1,48 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { routes } from './app-routing.module';
+import { FooterComponent } from './shared/components/footer/footer.component';
+import { APP_BASE_HREF } from '@angular/common';
+import { HomeModule } from './home/home.module';
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
-  }));
+    let app: AppComponent;
+    let fixture: ComponentFixture<FooterComponent>;
+    let compiled: HTMLElement;
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            imports: [
+                RouterTestingModule.withRoutes(routes),
+                HomeModule
+            ],
+            declarations: [
+                AppComponent,
+                FooterComponent
+            ],
+            providers: [
+                {provide: APP_BASE_HREF, useValue: '/'}
+            ]
+        }).compileComponents();
+    }));
 
-  it(`should have as title 'portfolio'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('portfolio');
-  });
+    beforeEach(async (() => {
+        fixture = TestBed.createComponent(AppComponent);
+        app = fixture.componentInstance;
+        compiled = fixture.debugElement.nativeElement;
+        fixture.detectChanges();
+    }));
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('portfolio app is running!');
-  });
+    it('should create the app', () => {
+        expect(app).toBeTruthy();
+    });
+
+    it('should render router outlet', () => {
+        expect(compiled.querySelector('router-outlet')).toBeTruthy();
+    });
+
+    it('should render footer', () => {
+        expect(compiled.querySelector('app-footer')).toBeTruthy();
+    });
 });

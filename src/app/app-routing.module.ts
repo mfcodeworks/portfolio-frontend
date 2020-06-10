@@ -9,7 +9,7 @@ const useHash = ipfs.includes(
     window.location.host.split('.')[0]
 );
 
-const routes: Routes = [
+export const routes: Routes = [
     {
         path: '',
         loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
