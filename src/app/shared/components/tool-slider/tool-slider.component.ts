@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, Input, AfterViewChecked } from '@angular/core';
-import { tns, TinySliderInstance, TinySliderSettings } from "tiny-slider/src/tiny-slider";
+import { tns, TinySliderInstance, TinySliderSettings } from "tiny-slider";
 import { Slide } from '../../core';
 
 @Component({

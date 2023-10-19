@@ -7,7 +7,7 @@ import { routes } from '../../home.routing';
 import { HomeService } from '../../../services/home/home.service';
 import { ToolSliderComponent } from '../../../shared/components/tool-slider/tool-slider.component';
 import { NavbarComponent } from '../../../shared/components/navbar/navbar.component';
-import { GraphQLModule } from '../../../graphql.module';
+import { GraphQLModule } from '../../../graphql.module.ts.old';
 import { APP_BASE_HREF } from '@angular/common';
 
 describe('HomeComponent', () => {

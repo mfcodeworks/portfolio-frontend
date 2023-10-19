@@ -13,25 +13,37 @@ import { Slide, ToolGraphQL, PostGraphQL, MetaFileGraphQL } from '../../../share
 export class HomeComponent {
 
     // Get Home page data from GraphQL
-    pageData: Observable<any> = this.home.getHomePageData().pipe(share());
+    pageData: Observable<any>
 
     // Get tag logos
-    imageSlides: Observable<Slide[]> = this.pageData.pipe(
-        // Map GraphQL query to structured array
-        map(({data}) => this.mapToolGraphQL(data.allTools))
-    );
+    imageSlides: Observable<Slide[]>
 
     // Get latest posts
-    posts: Observable<PostGraphQL[]> = this.pageData.pipe(
-        map(({data}) => data.allPost)
-    );
+    posts: Observable<PostGraphQL[]>
 
     // Get CV
-    cv: Observable<MetaFileGraphQL> = this.pageData.pipe(
-        map(({data}) => data.allMetaFiles[0])
-    );
+    cv: Observable<MetaFileGraphQL>
 
-    constructor(private home: HomeService) { }
+    constructor(private home: HomeService) {
+        // Get Home page data from GraphQL
+        this.pageData= this.home.getHomePageData().pipe(share());
+
+        // Get tag logos
+        this.imageSlides = this.pageData.pipe(
+            // Map GraphQL query to structured array
+            map(({data}) => this.mapToolGraphQL(data.allTools))
+        );
+
+        // Get latest posts
+        this.posts = this.pageData.pipe(
+            map(({data}) => data.allPost)
+        );
+
+        // Get CV
+        this.cv = this.pageData.pipe(
+            map(({data}) => data.allMetaFiles[0])
+        );
+    }
 
     // Map GraphQL Tool query to Slide array
     mapToolGraphQL(d: ToolGraphQL[]): Slide[] {

@@ -40,9 +40,10 @@ export class BlockComponent implements OnChanges, AfterViewChecked {
 
     // Code Snippet Renderer
     codeRenderer = props => {
-        props.node.language = this.languageModifier(props.node.language);
-        return h('pre', {className: `${props.node.code.indexOf('\n') > -1 && 'line-numbers'} language-${props.node.language}`},
-            h('code', {innerHTML: Prism.highlight(props.node.code, Prism.languages[props.node.language], props.node.language)})
+        // console.debug('CODE RENDERER PROPS:', props)
+        // props.node.language = this.languageModifier(props.node.language);
+        return h('pre', {className: `${props.node.code.indexOf('\n') > -1 && 'line-numbers'} language-${this.languageModifier(props.node.language)}`},
+            h('code', {innerHTML: Prism.highlight(props.node.code, Prism.languages[this.languageModifier(props.node.language)], this.languageModifier(props.node.language))})
         )
     };
 

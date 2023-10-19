@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Apollo } from 'apollo-angular';
-import { ApolloQueryResult } from 'apollo-client';
 import {
     BlogPostsPage,
     BlogPostPage,
@@ -18,42 +16,42 @@ export class BlogService {
 
     constructor(private apollo: Apollo) { }
 
-    getBlogPosts(offset = 0, limit = 10): Observable<ApolloQueryResult<any>> {
+    getBlogPosts(offset = 0, limit = 10) {
         return this.apollo.query<any>({
             query: BlogPostsPage,
             variables: {offset, limit}
         });
     }
 
-    getBlogPostsFiltered(ref: string, offset = 0, limit = 10): Observable<ApolloQueryResult<any>> {
+    getBlogPostsFiltered(ref: string, offset = 0, limit = 10) {
         return this.apollo.query<any>({
             query: BlogPostsPageFiltered,
             variables: {offset, limit, ref}
         });
     }
 
-    getBlogPost(slug: string): Observable<ApolloQueryResult<any>> {
+    getBlogPost(slug: string) {
         return this.apollo.query<any>({
             query: BlogPostPage,
             variables: {slug}
         });
     }
 
-    getBlogAuthor(slug: string): Observable<ApolloQueryResult<any>> {
+    getBlogAuthor(slug: string) {
         return this.apollo.query<any>({
             query: BlogAuthor,
             variables: {slug}
         });
     }
 
-    getTagID(name: string): Observable<ApolloQueryResult<any>> {
+    getTagID(name: string) {
         return this.apollo.query<any>({
             query: Tag,
             variables: {name}
         })
     }
 
-    getCategoryID(name: string): Observable<ApolloQueryResult<any>> {
+    getCategoryID(name: string) {
         return this.apollo.query<any>({
             query: Category,
             variables: {name}

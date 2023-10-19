@@ -1,18 +1,18 @@
+import { APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
+import { HttpLink } from 'apollo-angular/http';
 import { NgModule } from '@angular/core';
-import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
-import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import { environment } from '../environments/environment';
+import { ApolloClientOptions, InMemoryCache } from '@apollo/client/core';
 
-const uri = environment.graphql.uri;
-export function createApollo(httpLink: HttpLink) {
+const uri = 'https://682knlgh.apicdn.sanity.io/v1/graphql/production/default'; // <-- add the URL of the GraphQL server here
+export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   return {
-    link: httpLink.create({uri}),
+    link: httpLink.create({ uri }),
     cache: new InMemoryCache(),
   };
 }
 
 @NgModule({
+  exports: [ApolloModule],
   providers: [
     {
       provide: APOLLO_OPTIONS,
@@ -20,9 +20,5 @@ export function createApollo(httpLink: HttpLink) {
       deps: [HttpLink],
     },
   ],
-  exports: [
-    ApolloModule,
-    HttpLinkModule
-  ]
 })
 export class GraphQLModule {}

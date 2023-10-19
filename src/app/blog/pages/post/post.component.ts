@@ -17,32 +17,20 @@ import { ModalService } from '../../../services/modal/modal.service';
 export class PostComponent {
 
     // Loading state
-    loading: BehaviorSubject<boolean> = new BehaviorSubject(true);
+    loading: BehaviorSubject<boolean>
 
     // Sanitized preview URL
-    previewURL: BehaviorSubject<SafeResourceUrl> = new BehaviorSubject('');
+    previewURL: BehaviorSubject<SafeResourceUrl>
 
     // Get page data
-    pageData: Observable<PostGraphQL> = this.router.paramMap.pipe(
-        map(m => m.get('slug')),
-        switchMap(s => this.blog.getBlogPost(s)),
-        map(({data}) => data.allPost[0]),
-        tap(_ => this.loading.next(false)),
-        share()
-    );
+    pageData: Observable<PostGraphQL>
+
 
     // Post data
-    post: Observable<PostGraphQL> = this.pageData.pipe(
-        tap((p: PostGraphQL) => {
-            this.seo.setTitle(p.title);
-            this.seo.setDescription(p.excerpt);
-            this.seo.setMetaImage(p.mainImage.asset.url);
-        }),
-        tap((p: PostGraphQL) => this.previewURL.next(this.sanitizer.bypassSecurityTrustResourceUrl(p.preview)))
-    );
+    post: Observable<PostGraphQL>
 
     // Author data
-    author: Observable<AuthorGraphQL> = this.post.pipe(map(p => p.author));
+    author: Observable<AuthorGraphQL>
 
     constructor(
         private blog: BlogService,
@@ -50,7 +38,35 @@ export class PostComponent {
         private router: ActivatedRoute,
         private seo: SEOService,
         private sanitizer: DomSanitizer
-    ) { }
+    ) {
+        // Loading state
+        this.loading = new BehaviorSubject(true);
+
+        // Sanitized preview URL
+        this.previewURL = new BehaviorSubject('');
+
+        // Get page data
+        this.pageData = this.router.paramMap.pipe(
+            map(m => m.get('slug')),
+            switchMap(s => this.blog.getBlogPost(s)),
+            map(({data}) => data.allPost[0]),
+            tap(_ => this.loading.next(false)),
+            share()
+        );
+
+        // Post data
+        this.post = this.pageData.pipe(
+            tap((p: PostGraphQL) => {
+                this.seo.setTitle(p.title);
+                this.seo.setDescription(p.excerpt);
+                this.seo.setMetaImage(p.mainImage.asset.url);
+            }),
+            tap((p: PostGraphQL) => this.previewURL.next(this.sanitizer.bypassSecurityTrustResourceUrl(p.preview)))
+        );
+
+        // Author data
+        this.author = this.post.pipe(map(p => p.author));
+    }
 
     openModal(name: string): void {
         this.modals.open(name);
