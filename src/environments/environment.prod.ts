@@ -14,7 +14,7 @@ export const environment = {
         }
     },
     mailer: {
-        from: 'MF Codeworks Test <mfcodeworks@gmail.com>',
+        from: 'MF Codeworks Portfolio <arranjamesfletcher2012@gmail.com>',
         to: 'Arran Fletcher <arranjamesfletcher2012@gmail.com>',
         api: 'https://mailer.mfcodeworks.com/.netlify/functions/mailer/sendMail'
     }
