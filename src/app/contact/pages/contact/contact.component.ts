@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { MailerService } from '../../../services/mailer/mailer.service';
 import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -27,7 +27,7 @@ export class ContactComponent implements OnInit {
     });
 
     constructor(
-        private fb: FormBuilder,
+        private fb: UntypedFormBuilder,
         private mailer: MailerService,
         private seo: SEOService
     ) {}
