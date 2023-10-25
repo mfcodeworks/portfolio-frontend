@@ -8,12 +8,33 @@
     <div class="hero-body">
         <div class="container">
             <h1 class="title is-spaced is-size-1-desktop is-size-2-tablet is-size-3-mobile">
-                Scalable Apps, Fast Backend Code &amp; Advanced IT Management
+                Android Expert, Scalable Enterprise Applications, &amp; Advanced
+                Platform and Infrastructure Management
             </h1>
             <h2 class="subtitle is-size-4-desktop">
-                I help solve your IT problems.<br/>
-                I design clean, fast, maintainable code for any project.
+                I've worked with dozens of companies to design and build scalable cloud-based enterprise platforms
+                servicing hundreds of thousands of clients.<br/><br/>
+                ISO 27001 certified flows, CI/CD flows monitoring code tests and security vulnerabilities,
+                secure locked down infrastructure for public facing and internal services, I've personally
+                implemented each of these and more within the companies I've worked with.
             </h2>
+            <p class='subtitle is-size-5'>
+                Interested in how I can aid your company?
+            </p>
+            <div class='buttons is-centered'>
+                <a class='button is-dark'
+                    *ngIf='cv | async; let f'
+                    [href]='f.file.asset.url + "?dl=Arran Fletcher CV.pdf"'
+                    download>
+                    <span class="icon">
+                        <i class="fas fa-file-download"></i>
+                    </span>
+                    <span>Download CV</span>
+                </a>
+                <a class='button is-dark' routerLink="/contact">
+                    Contact
+                </a>
+            </div>
         </div>
     </div>
 </section>
@@ -24,16 +45,19 @@
             <div class='columns is-centered'>
                 <div class="column is-three-quarters">
                     <h1 class="title is-spaced is-size-3-desktop is-size-4-mobile has-text-white">
-                        Hey, I’m Arran
+                        I’m Arran, a full-stack & DevOps engineer with Android Enterprise Expert certification
                     </h1>
                     <h2 class="subtitle is-size-5-desktop has-text-white has-text-left-mobile">
-                        I'm a fully qualified, highly experienced developer
-                        with 5 years work in the industry.
+                        I have over 7 years of experience in platform engineering and management across education,
+                        enterprise mobile management, and fintech sectors.
                         <span class='is-mobile'><br/><br/></span>
-                        I've architected large scale
-                        applications within AWS, created complex multi-platform apps,
-                        worked extensively managing backend servers, and I'm an expert
-                        at web hosting, DNS management, and SEO optimization.
+                        I've architected large scale enterprise applications in Azure & AWS, created
+                        multi-platform apps for desktop and mobile OS, worked extensively managing
+                        servers, databases, queue and WebSocket backbones, and all other areas of infrastructure.
+                        <br/><br/>
+                        I'm a professional with CCNA4 and Android Expert certification, I've implemented and worked in
+                        ISO 27001 workflows, and I've been a team lead for over a year managing and growing my team
+                        to be the best developers they can be and advance their knowledge and skills.
                     </h2>
                 </div>
             </div>
@@ -53,12 +77,12 @@
                     <h1 class="title is-spaced is-size-3-desktop is-size-4-mobile">
                         Technology Stack
                     </h1>
-                    <p class='subtitle is-size-5'>
-                        Below is just some of the technologies I've worked extensively
+                    <!-- <p class='subtitle is-size-5'>
+                        Below are some of the tools and technologies I've worked extensively
                         with, and offer my services for.<br/>
-                        I'm always practicing new technology
-                        and setting myself apart with clean, maintainable, fast code.
-                    </p>
+                        With every new project I've taken on I'm fast to pick up new systems and tools
+                        to optimize and deliver the best product possible.
+                    </p> -->
                 </div>
                 <div class='image-grid'>
                     <figure *ngFor='let i of imageSlides | async'>
@@ -78,16 +102,16 @@
             <div class="column is-three-quarters">
                 <div class='heading-spacer'>
                     <h1 class="title is-spaced is-size-3-desktop is-size-4-mobile has-text-white">
-                        My Latest Work
+                        Projects and Experience
                     </h1>
                     <p class='subtitle is-size-5 has-text-white'>
-                        I keep this portfolio updated with my latest
-                        work and share my knowledge and experience with everyone here,
+                        I keep this portfolio updated with my projects
+                        and share my knowledge and thoughts with everyone here,
                         and at my <a class='subtitle has-text-white has-text-underlined'
                             href="https://dev.to/mfcodeworks"
                             target="_blank">
                             dev.to profile
-                        </a>. Below is some of my latest articles.
+                        </a>. Below is some of my latest writing.
                     </p>
                 </div>
                 <div class='post-preview-container'>
@@ -107,10 +131,10 @@
                         Like What You See?
                     </h1>
                     <p class='subtitle is-size-5'>
-                        If you need someone that is confident, understands the fundamentals
-                        of HTTP protocol, proper code design, and high level concepts like
-                        AWS usage, scalable applications, fast servers, and proper web management,
-                        feel free to download a CV or contact me below.
+                        If you need someone that is experienced, understands the fundamentals
+                        of protocols, proper code design, and high level concepts like
+                        cloud usage, scalable platfomrs, optimized infrastructure configuration,
+                        and proper web management, feel free to download a CV or contact me below.
                     </p>
                     <div class='buttons is-centered'>
                         <a class='button is-dark'
@@ -122,7 +146,7 @@
                             </span>
                             <span>Download CV</span>
                         </a>
-                        <a class='button is-link' routerLink="/contact">
+                        <a class='button is-dark' routerLink="/contact">
                             Contact
                         </a>
                     </div>

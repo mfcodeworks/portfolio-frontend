@@ -26,7 +26,7 @@ export class HomeComponent {
 
     constructor(private home: HomeService) {
         // Get Home page data from GraphQL
-        this.pageData= this.home.getHomePageData().pipe(share());
+        this.pageData = this.home.getHomePageData().pipe(share());
 
         // Get tag logos
         this.imageSlides = this.pageData.pipe(
