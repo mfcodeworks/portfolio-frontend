@@ -110,3 +110,13 @@ pre {
 .breadcrumb {
     white-space: pre-wrap;
 }
+
+/* Image opacity */
+.has-point-four-opacity {
+    opacity: 0.4;
+}
+@media screen and (max-width: 768px) {
+    .has-quarter-opacity-mobile {
+        opacity: 0.25;
+    }
+}
